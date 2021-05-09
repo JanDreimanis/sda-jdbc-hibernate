@@ -5,5 +5,14 @@
         4) boolean delete(id)
         5) List<Employee> find(int limit)
         6) List<Employee> findByDepartment(String departmentName);
-
+        7) List<Employee>  findAll();
     2)  Create class EmployeesMain and demonstrate the usage of all previously implemented methods
+additional:
+    3) Create repository for departments and implement CRUD operations.
+        a) What happens if you try to delete department to which employees are assigned?
+            How will you solve this situation?
+    4) Add/implement new methods in EmployeeRepository:
+        a) For un-assigning all employees who are in department with specific name.
+             removeEmployeesFromDepartment(String departmentName);
+           This method should return the number of how many employees were unassigned
+           from this specific department. Demonstrate the usage of this method in EmployeesMain
