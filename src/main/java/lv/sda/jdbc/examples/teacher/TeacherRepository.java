@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class TeacherRepository {
         try {
             connection = DriverManager.getConnection(DB_URI, USERNAME, PASSWORD);
             connection.setAutoCommit(true);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -47,13 +49,18 @@ public class TeacherRepository {
          If teacher is not found return null
          */
         try {
+
             PreparedStatement statement = connection.prepareStatement("SELECT id, first_name, " +
                     "last_name FROM teacher WHERE id = ?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
+            Teacher teacher = null;
             if (rs.next()) {
-                return new Teacher(rs.getInt(1), rs.getString(2), rs.getString(3));
+                teacher = new Teacher(rs.getInt(1), rs.getString(2), rs.getString(3));
             }
+            statement.close();
+            rs.close();
+            return teacher;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -78,7 +85,7 @@ public class TeacherRepository {
             pStmt.setString(1, firstName);
             pStmt.setString(2, lastName);
             ResultSet rs = pStmt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 result.add(new Teacher(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         } catch (SQLException e) {

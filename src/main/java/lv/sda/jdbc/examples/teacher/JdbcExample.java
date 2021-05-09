@@ -7,6 +7,18 @@ public class JdbcExample {
 
         System.out.println(repository.findBy(1));
 
+        Teacher teacher = repository.findBy(56);
+        teacher.setFirstName("Janis");
+        teacher.setLastName("Logins");
+
+        boolean isUpdated = repository.update(teacher);
+
+        if (isUpdated) {
+            System.out.println("Updated teacher!");
+        } else {
+            System.out.println("update failed");
+        }
+
         repository.closeConnection();
     }
 }
