@@ -1,0 +1,9 @@
+    1) Create EmployeeRepository with the following methods for:
+        1) Employee findById(int id)
+        2) boolean insert(Employee employee)
+        3) boolean update(Employee employee)
+        4) boolean delete(id)
+        5) List<Employee> find(int limit)
+        6) List<Employee> findByDepartment(String departmentName);
+
+    2)  Create class EmployeesMain and demonstrate the usage of all previously implemented methods
