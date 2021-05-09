@@ -8,6 +8,11 @@ public class JdbcExample {
         System.out.println(repository.findBy(1));
 
         Teacher teacher = repository.findBy(56);
+        if (teacher == null) {
+            System.out.println("Teacher for update not found.");
+            repository.closeConnection();
+            return;
+        }
         teacher.setFirstName("Janis");
         teacher.setLastName("Logins");
 
