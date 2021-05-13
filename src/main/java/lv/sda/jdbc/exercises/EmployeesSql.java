@@ -4,6 +4,7 @@ final class EmployeesSql {
 
     private static final String SELECT_FROM_EMPLOYEES = "SELECT employees.id, first_name, " +
             "last_name, department_id FROM employees ";
+
     static final String SELECT_EMPLOYEE_BY_ID_QUERY = SELECT_FROM_EMPLOYEES + "WHERE id = ?";
     static final String SELECT_EMPLOYEE_BY_DEPARTMENT_QUERY = SELECT_FROM_EMPLOYEES +
             "inner join departments " +

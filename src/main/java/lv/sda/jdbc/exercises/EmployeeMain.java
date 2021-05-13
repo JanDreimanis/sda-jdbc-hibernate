@@ -7,7 +7,7 @@ public class EmployeeMain {
         System.out.println("findById(1):\n " + repository.findById(1));
         System.out.println();
 
-        int id = 1001;
+        int id = 1002;
         Employee employee = new Employee(id, "Lauma", "Saulkalne", 4);
         System.out.println("insert Lauma: " + repository.insert(employee));
         System.out.println(repository.findById(id));
